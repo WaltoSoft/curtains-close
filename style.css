@@ -17,11 +17,11 @@ button {
 
 button .button-icon {
   font-family: 'Material Design Icons';
-  font-size: 30;
+  font-size: 30pt;
 }
 
 button .button-text {
   font-family: 'Noto Sans Gothic';
-  font-size: 20;
+  font-size: 21pt;
 }
 
