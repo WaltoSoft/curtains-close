@@ -1,0 +1,57 @@
+#compdef curtains-close
+
+autoload -U is-at-least
+
+_curtains-close() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" : \
+'-c+[]:CSS_PATH:_files' \
+'--css-path=[]:CSS_PATH:_files' \
+'-C+[]:CSS_CONTENT:_default' \
+'--css-content=[]:CSS_CONTENT:_default' \
+'-l+[]:CSS_LOADER_PATH:_files' \
+'--css-loader-path=[]:CSS_LOADER_PATH:_files' \
+'-s+[]:SETTINGS_PATH:_files' \
+'--settings-path=[]:SETTINGS_PATH:_files' \
+'-S+[]:SETTINGS_CONTENT:_default' \
+'--settings-content=[]:SETTINGS_CONTENT:_default' \
+'-L+[]:SETTINGS_LOADER_PATH:_files' \
+'--settings-loader-path=[]:SETTINGS_LOADER_PATH:_files' \
+'-b+[]:BUTTONS:_default' \
+'--buttons=[]:BUTTONS:_default' \
+'-n+[]:BUTTONS_PER_ROW:_default' \
+'--buttons-per-row=[]:BUTTONS_PER_ROW:_default' \
+'-x+[]:COLUMN_SPACING:_default' \
+'--column-spacing=[]:COLUMN_SPACING:_default' \
+'-y+[]:ROW_SPACING:_default' \
+'--row-spacing=[]:ROW_SPACING:_default' \
+'-d+[]:DELAY_BEFORE_CLOSING:_default' \
+'--delay-before-closing=[]:DELAY_BEFORE_CLOSING:_default' \
+'-v[]' \
+'--version[]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+}
+
+(( $+functions[_curtains-close_commands] )) ||
+_curtains-close_commands() {
+    local commands; commands=()
+    _describe -t commands 'curtains-close commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_curtains-close" ]; then
+    _curtains-close "$@"
+else
+    compdef _curtains-close curtains-close
+fi
