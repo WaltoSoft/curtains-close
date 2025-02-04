@@ -1,0 +1,50 @@
+{
+  "buttons_per_row": 3,
+  "column_spacing": 10,
+  "row_spacing": 10,
+  "delay_before_closing": 0,
+  "buttons": [
+    {
+      "id": "lock",
+      "command": "loginctl lock-session",
+      "icon": "󰍁",
+      "text": "Lock",
+      "keybind": "l"
+    },
+    {
+      "id": "logout",
+      "command": "hyprctl dispatch exit",
+      "icon": "󰍃",
+      "text": "Logout",
+      "keybind": "o"
+    },
+    {
+      "id": "suspend",
+      "command": "lockscreen.sh & disown && systemctl suspend",
+      "icon": "󰏦",
+      "text": "Suspend",
+      "keybind": "u"
+    },
+    {
+      "id": "shutdown",
+      "command": "systemctl poweroff",
+      "icon": "󰐥",
+      "text": "Shutdown",
+      "keybind": "s"
+    },
+    {
+      "id": "hibernate",
+      "command": "systemctl hibernate",
+      "icon": "󰸨",
+      "text": "Hibernate",
+      "keybind": "h"
+    },
+    {
+      "id": "reboot",
+      "command": "systemctl reboot",
+      "icon": "󰑧",
+      "text": "Reboot",
+      "keybind": "r"
+    }
+  ]
+}
